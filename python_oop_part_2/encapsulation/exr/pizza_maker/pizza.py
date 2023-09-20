@@ -1,5 +1,5 @@
-from project.dough import Dough
-from project.topping import Topping
+from python_oop_part_2.encapsulation.exr.pizza_maker.dough import Dough
+from python_oop_part_2.encapsulation.exr.pizza_maker.topping import Topping
 
 
 class Pizza:

@@ -1,6 +1,6 @@
-from project.dough import Dough
-from project.pizza import Pizza
-from project.topping import Topping
+from python_oop_part_2.encapsulation.exr.pizza_maker.dough import Dough
+from python_oop_part_2.encapsulation.exr.pizza_maker.pizza import Pizza
+from python_oop_part_2.encapsulation.exr.pizza_maker.topping import Topping
 
 tomato_topping = Topping("Tomato", 60)
 
