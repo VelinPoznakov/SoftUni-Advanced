@@ -1,5 +1,5 @@
-from project.family_car import FamilyCar
-from project.vehicle import Vehicle
+from python_oop_part_2.inheritance.exr.need_for_speed.family_car import FamilyCar
+from python_oop_part_2.inheritance.exr.need_for_speed.vehicle import Vehicle
 
 vehicle = Vehicle(50, 150)
 print(Vehicle.DEFAULT_FUEL_CONSUMPTION)
