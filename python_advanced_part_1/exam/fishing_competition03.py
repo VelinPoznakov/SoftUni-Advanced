@@ -1,5 +1,4 @@
-def invalid(s_pos, n):
-
+def invalid(s_pos):
     if s_pos[0] == -1:
         s_pos[0] = n - 1
 
@@ -11,6 +10,7 @@ def invalid(s_pos, n):
 
     else:
         s_pos[1] = 0
+
 
 n = int(input())
 
@@ -30,7 +30,7 @@ for i in range(n):
     area.append([l for l in line])
     if 'S' in line:
         s_pos = [i, line.index('S')]
-        area[s_pos[0]][s_pos[1]] = '-'
+        area[s_pos[i]][s_pos[1]] = '-'
 
 while True:
     command = input()
@@ -43,14 +43,15 @@ while True:
              ]
 
     if 0 > s_pos[0] or s_pos[0] >= n or 0 > s_pos[1] or s_pos[1] >= n:
-        invalid(s_pos, n)
+        invalid(s_pos)
 
     if area[s_pos[0]][s_pos[1]].isdigit():
         amount += int(area[s_pos[0]][s_pos[1]])
         area[s_pos[0]][s_pos[1]] = '-'
 
     if area[s_pos[0]][s_pos[1]] == 'W':
-        print(f"You fell into a whirlpool! The ship sank and you lost the fish you caught. Last coordinates of the ship: [{s_pos[0]},{s_pos[1]}]")
+        print(
+            f"You fell into a whirlpool! The ship sank and you lost the fish you caught. Last coordinates of the ship: [{','.join(str(i) for i in s_pos)}]")
         exit()
 
 area[s_pos[0]][s_pos[1]] = 'S'
@@ -65,7 +66,3 @@ if amount > 0:
 
 for l in area:
     print(''.join([str(a) for a in l]))
-
-
-
-

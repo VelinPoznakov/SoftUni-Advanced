@@ -1,33 +1,36 @@
 from collections import deque
 
-tools = deque(int(i) for i in input().split())  #hqueue popleft
-substances = [int(i) for i in input().split()]  #stack iem.pop(-1)
-challenges = [int(i) for i in input().split()]  # normal comprehension
+tools = deque(int(x) for x in input().split())  # first
+substances = [int(x) for x in input().split()]  # last
+challenges = [int(x) for x in input().split()]
+# t * s remove them if t*s == any of c remove it
+# if not t += 1 move it to the back s -= 1 add it again if the s is == 0 not add it
 
-while challenges:
+while tools and substances and challenges:
     t = tools.popleft()
-    s = substances.pop(-1)
+    s = substances[-1]
 
     if t * s in challenges:
         challenges.remove(t * s)
 
     else:
-        t += 1
-        tools.append(t)
-        if s - 1 > 0:
-            substances.append(s - 1)
+        tools.append(t + 1)
+        if substances[-1] - 1 == 0:
+            substances.remove(s)
+        else:
+            substances[-1] -= 1
 
-    if not substances or not substances and challenges:
-        print("Harry is lost in the temple. Oblivion awaits him.")
-        break
+if challenges:
+    print("Harry is lost in the temple. Oblivion awaits him.")
 
-if not challenges:
+else:
     print("Harry found an ostracon, which is dated to the 6th century BCE.")
 
 
 if tools:
-    print(f"Tools: {', '.join([str(t) for t in tools])}")
+    print(f"Tools: {', '.join(str(t) for t in tools)}")
 if substances:
-    print(f"Substances: {', '.join([str(s) for s in substances])}")
+    print(f"Substances: {', '.join(str(s) for s in substances)}")
 if challenges:
-    print(f"Challenges: {', '.join([str(c) for c in challenges])}")
+    print(f"Challenges: {', '.join(str(c) for c in challenges)}")
+
