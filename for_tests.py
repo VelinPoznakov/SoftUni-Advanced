@@ -1,70 +1,33 @@
-def invalid(s_pos, n):
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
 
-    if s_pos[0] == -1:
-        s_pos[0] = n - 1
 
-    elif s_pos[0] == n:
-        s_pos[0] = 0
+x = 3
+y = 3
 
-    elif s_pos[1] == -1:
-        s_pos[1] = n - 1
+for i in range(x * y):
+    print(matrix[i // y][i % y])
 
-    else:
-        s_pos[1] = 0
 
-n = int(input())
+class Book:
+    def __init__(self, title):
+        self.title = title
+        self.books = []
 
-area = []
-s_pos = []
-amount = 0
+    def add_book(self, title):
+        if title not in self.books:
+            return self.books.append(title)
 
-commands = {
-    'up': (-1, 0),
-    'down': (1, 0),
-    'left': (0, -1),
-    'right': (0, 1)
-}
+        return f'{title} is already in the Library'
 
-for i in range(n):
-    line = input()
-    area.append([l for l in line])
-    if 'S' in line:
-        s_pos = [i, line.index('S')]
-        area[s_pos[0]][s_pos[1]] = '-'
+    def find_book(self, title):
+        if title in self.books:
+            return self.books[title]
 
-while True:
-    command = input()
-
-    if command == "collect the nets":
-        break
-
-    s_pos = [s_pos[0] + commands[command][0],
-             s_pos[1] + commands[command][1]
-             ]
-
-    if 0 > s_pos[0] or s_pos[0] >= n or 0 > s_pos[1] or s_pos[1] >= n:
-        invalid(s_pos, n)
-
-    if area[s_pos[0]][s_pos[1]].isdigit():
-        amount += int(area[s_pos[0]][s_pos[1]])
-        area[s_pos[0]][s_pos[1]] = '-'
-
-    if area[s_pos[0]][s_pos[1]] == 'W':
-        print(f"You fell into a whirlpool! The ship sank and you lost the fish you caught. Last coordinates of the ship: [{s_pos[0]},{s_pos[1]}]")
-        exit()
-
-area[s_pos[0]][s_pos[1]] = 'S'
-
-if amount >= 20:
-    print("Success! You managed to reach the quota!")
-else:
-    print(f"You didn't catch enough fish and didn't reach the quota! You need {20 - amount} tons of fish more.")
-
-if amount > 0:
-    print(f"Amount of fish caught: {amount} tons.")
-
-for l in area:
-    print(''.join([str(a) for a in l]))
+        return 'Book not found'
 
 
 

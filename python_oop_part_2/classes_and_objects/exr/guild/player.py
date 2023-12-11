@@ -13,7 +13,7 @@ class Player:
         return "Skill already added"
 
     def player_info(self):
-        for skill , mana in self.skills.items():
+        for skill, mana in self.skills.items():
             a = mana
             b = skill
 

@@ -22,7 +22,7 @@ class Trainer:
 
     def trainer_data(self):
         pokemon_data = "\n".join([f"- {p.pokemon_details()}" for p in self.pokemons])
-        return f"Pokemon Trainer {self.name}" + '\n' + f" Pokemon count {len(self.pokemons)}" + '\n' + f"{pokemon_data}"
+        return f"Pokemon Trainer {self.name}\n" + f" Pokemon count {len(self.pokemons)}" + '\n' + f"{pokemon_data}"
 
 
 pokemon = Pokemon("Pikachu", 90)
