@@ -1,4 +1,4 @@
-from project.bank_app import BankApp
+from project import BankApp
 
 bank = BankApp(3)
 

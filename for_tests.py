@@ -1,34 +1,17 @@
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
+class Vehicle:
+    def __init__(self, model: str, doors: int, fuel: float):
+        self.model = model
+        self.doors = doors
+        self.fuel = fuel
+
+    def __repr__(self) -> str:
+        return self.model 
 
 
-x = 3
-y = 3
-
-for i in range(x * y):
-    print(matrix[i // y][i % y])
+class Car(Vehicle):
+    def __init__(self, model, doors, fuel):
+        super().__init__(model, doors, fuel)
 
 
-class Book:
-    def __init__(self, title):
-        self.title = title
-        self.books = []
-
-    def add_book(self, title):
-        if title not in self.books:
-            return self.books.append(title)
-
-        return f'{title} is already in the Library'
-
-    def find_book(self, title):
-        if title in self.books:
-            return self.books[title]
-
-        return 'Book not found'
-
-
-
-
+car = Car('BMW', 4, 25.3)
+print(car.model)
